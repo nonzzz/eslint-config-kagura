@@ -1,0 +1,21 @@
+{
+  "name": "eslint-config-kagura",
+  "version": "1.0.3",
+  "description": "eslint style",
+  "main": "index.js",
+  "author": "miaya",
+  "license": "MIT",
+  "repository": "https://github.com/Miayawlr/eslint-config-kagura",
+  "homepage": "https://github.com/Miayawlr/eslint-config-kagura#readme",
+  "files": [
+    "index.js",
+    "rule.js",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "eslint": ">= 3"
+  },
+  "scripts": {},
+  "keywords": [],
+  "devDependencies": {}
+}
