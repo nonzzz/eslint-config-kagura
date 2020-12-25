@@ -1,4 +1,4 @@
-const rules = require('./rules')
+const rules = require('./rule')
 
 module.exports = {
   root: true,
