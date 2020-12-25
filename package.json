@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-kagura-beta",
+  "name": "eslint-config-kagura",
   "version": "1.0.3",
   "description": "eslint style",
   "main": "index.js",
