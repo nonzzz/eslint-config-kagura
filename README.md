@@ -2,7 +2,7 @@
 
 <br />
 
-Getting Started
+## Getting Started
 
 1. Install:`npm install eslint-config-kagura -D` or `yarn add eslint-config-kagura -D`
 
