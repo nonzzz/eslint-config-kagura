@@ -1,6 +1,33 @@
-module.exports = {
-  rules: {
-    'no-var': 'error',
+import globals from 'globals'
+import {pluginImport,pluginUnusedImports} from '~/plugins'
+import type { FlatConfig } from '../interface'
+
+export function javaScript(): FlatConfig[] {
+  return [{
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021
+      },
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
+    },
+    linterOptions: {
+      reportUnusedDisableDirectives: true
+    },
+    plugins: {
+      'unused-imports':pluginUnusedImports,
+    },
+    rules: {
+      'no-var': 'error',
     'object-shorthand': ['warn', 'properties'],
     'array-bracket-spacing': ['error', 'never'],
     'array-callback-return': ['error', {
@@ -155,5 +182,6 @@ module.exports = {
     'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
     'yield-star-spacing': ['error', 'both'],
     yoda: ['error', 'never']
-  }
+    },
+  }]
 }
