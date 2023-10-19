@@ -3,7 +3,12 @@ import { rewriteRulesPrefix } from '../shared'
 import { GLOB_SRC } from '~/constants'
 import { parserTypeScript, pluginImport, pluginTypeScript } from '~/plugins'
 
-export function typescript(): FlatConfig[] {
+export interface OptionsTypescriptWithTypes {
+  tsconfigPath?: string
+}
+
+export function typescript(options?: OptionsTypescriptWithTypes): FlatConfig[] {
+  const { tsconfigPath } = options ?? {}
   return [
     {
       plugins: {
@@ -14,7 +19,13 @@ export function typescript(): FlatConfig[] {
     {
       files: [GLOB_SRC],
       languageOptions: {
-        parser: parserTypeScript
+        parser: parserTypeScript,
+        ...tsconfigPath
+          ? {
+              project: [tsconfigPath],
+              tsconfigRootDir: process.cwd()
+            }
+          : {}
       },
       rules: {
         ...rewriteRulesPrefix(pluginTypeScript.configs['eslint-recommended'].overrides![0].rules!, '@typescript-eslint/',

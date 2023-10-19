@@ -1,7 +1,7 @@
 import type { FlatConfig } from '../interface'
 import { pluginStylistic } from '~/plugins'
 
-export function stylistic(): FlatConfig[] {
+export function stylistic(jsx = false): FlatConfig[] {
   return [
     {
       plugins: {
@@ -97,7 +97,44 @@ export function stylistic(): FlatConfig[] {
         'stylistic/template-tag-spacing': ['error', 'never'],
         'stylistic/type-annotation-spacing': ['error', {}],
         'stylistic/wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
-        'stylistic/yield-star-spacing': ['error', 'both']
+        'stylistic/yield-star-spacing': ['error', 'both'],
+        ...jsx
+          ? {
+              'stylistic/jsx-closing-bracket-location': 'error',
+              'stylistic/jsx-closing-tag-location': 'error',
+              'stylistic/jsx-curly-brace-presence': ['error', { propElementValues: 'always' }],
+              'stylistic/jsx-curly-newline': 'error',
+              'stylistic/jsx-curly-spacing': ['error', 'never'],
+              'stylistic/jsx-equals-spacing': 'error',
+              'stylistic/jsx-first-prop-new-line': 'error',
+              'stylistic/jsx-indent': ['error', 2, { checkAttributes: true, indentLogicalExpressions: true }],
+              'stylistic/jsx-indent-props': ['error', 2],
+              'stylistic/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
+              'stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
+              'stylistic/jsx-quotes': 'error',
+              'stylistic/jsx-tag-spacing': [
+                'error',
+                {
+                  afterOpening: 'never',
+                  beforeClosing: 'never',
+                  beforeSelfClosing: 'always',
+                  closingSlash: 'never'
+                }
+              ],
+              'stylistic/jsx-wrap-multilines': [
+                'error',
+                {
+                  arrow: 'parens-new-line',
+                  assignment: 'parens-new-line',
+                  condition: 'parens-new-line',
+                  declaration: 'parens-new-line',
+                  logical: 'parens-new-line',
+                  prop: 'parens-new-line',
+                  return: 'parens-new-line'
+                }
+              ]
+            }
+          : {}
       }
     }
   ]

@@ -2,7 +2,7 @@ import globals from 'globals'
 import type { FlatConfig } from '../interface'
 import { pluginUnusedImports } from '~/plugins'
 
-export function javaScript(): FlatConfig[] {
+export function javascript(): FlatConfig[] {
   return [{
     languageOptions: {
       ecmaVersion: 'latest',
