@@ -1,6 +1,5 @@
-import {javaScript,typescript} from './conf'
-import type { FlatConfig } from './interface'
+import { imports, javaScript, stylistic, typescript } from './conf'
 
 export function nonzzz() {
-    return typescript()
+  return [javaScript(), imports(), typescript(), stylistic()].flat()
 }

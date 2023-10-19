@@ -1,23 +1,32 @@
-import {FlatConfig} from '../interface'
-import {GLOB_JS, GLOB_JSX, GLOB_TS,GLOB_TSX} from '~/constants'
-import {parserTypeScript,pluginTypeScript} from '~/plugins'
+import { FlatConfig } from '../interface'
+import { rewriteRulesPrefix } from '../shared'
+import { GLOB_SRC } from '~/constants'
+import { parserTypeScript, pluginImport, pluginTypeScript } from '~/plugins'
 
-export function typescript():FlatConfig[]{
-    return [{
-        plugins:{
-            '@typescript':pluginTypeScript
-        },
-        files:[GLOB_TS,GLOB_TSX],
-        languageOptions:{
-            parser:parserTypeScript,
-        },
-        rules:{
-            '@typescript-eslint/no-explicit-any': 0,
-            '@typescript-eslint/space-infix-ops': 'error',
-            '@typescript-eslint/type-annotation-spacing': ['error', {
-              before: false,
-              after: true
-            }]
-        }
-    }]
+export function typescript(): FlatConfig[] {
+  return [
+    {
+      plugins: {
+        typescript: pluginTypeScript,
+        import: pluginImport
+      }
+    },
+    {
+      files: [GLOB_SRC],
+      languageOptions: {
+        parser: parserTypeScript
+      },
+      rules: {
+        ...rewriteRulesPrefix(pluginTypeScript.configs['eslint-recommended'].overrides![0].rules!, '@typescript-eslint/',
+          'typescript/'),
+        'typescript/no-explicit-any': 'off'
+      }
+    },
+    {
+      files: ['**/*.d.ts'],
+      rules: {
+        'import/no-duplicates': 'off'
+      }
+    }
+  ]
 }

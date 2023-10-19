@@ -1,1 +1,1 @@
-export {nonzzz} from './nonzzz'
+export { nonzzz } from './nonzzz'
