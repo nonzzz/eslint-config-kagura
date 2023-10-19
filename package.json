@@ -1,18 +1,25 @@
 {
   "name": "eslint-config-kagura",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "eslint style",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "author": "kanno",
   "license": "MIT",
   "repository": "https://github.com/nonzzz/eslint-config-kagura",
   "homepage": "https://github.com/nonzzz/eslint-config-kagura",
   "files": [
-    "index.js",
-    "typescript.js",
-    "src/*",
+    "dist",
     "README.md"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "peerDependencies": {
     "eslint": ">= 8.0.0"
   },

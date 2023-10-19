@@ -5,6 +5,7 @@
         "strict": true,
         "esModuleInterop": true,
         "resolveJsonModule":true,
+        "moduleResolution":"Node",
         "paths": {
             "~/*":["internal/*"]
         }

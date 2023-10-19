@@ -1,3 +1,3 @@
-const {nonzzz} =require('./dist')
+const { nonzzz } = require('./dist')
 
-module.exports = nonzzz()
+module.exports = nonzzz({ ts: true })
