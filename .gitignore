@@ -1,1 +1,10 @@
 node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+.yarn/cache
+.yarn/install-state.gz
+
+dist
