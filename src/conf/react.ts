@@ -13,9 +13,14 @@ export function react(): FlatConfig[] {
         'jsx-a11y': pluginJsxA11y,
         'react-hooks': pluginReactHooks
       },
+      settings: {
+        react: {
+          react: { version: 'detect' }
+        }
+      },
       rules: {
         ...pluginReact.configs.recommended.rules,
-        ...pluginReactHooks.configs['jsx-runtime'].rules,
+        ...pluginReact.configs['jsx-runtime'].rules,
         ...pluginReactHooks.configs.recommended.rules,
         ...pluginJsxA11y.configs.recommended.rules,
         'react/react-in-jsx-scope': 'off',
