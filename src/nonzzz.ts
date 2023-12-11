@@ -1,11 +1,12 @@
-import { imports, javascript, react, stylistic, typescript } from './conf'
+import { imports, javascript, react, stylistic } from './conf'
 import type { FlatConfig } from './interface'
-import type { OptionsTypescriptWithTypes } from './conf'
+import type { OptionsTypescriptWithTypes } from './conf/typescript'
 
 interface ESLintNonzzzOptions {
   ts?: boolean | OptionsTypescriptWithTypes
   react?: boolean
   jsx?: boolean
+  unusedImports?: boolean
 }
 
 function enable(opt: boolean | NonNullable<unknown> | undefined): boolean {
@@ -14,12 +15,15 @@ function enable(opt: boolean | NonNullable<unknown> | undefined): boolean {
   return Object.keys(opt).length > 1
 }
 
-export function nonzzz(opts?: ESLintNonzzzOptions, ...userOptions: FlatConfig[]): FlatConfig[] {
+export async function nonzzz(opts?: ESLintNonzzzOptions, ...userOptions: FlatConfig[]): Promise<FlatConfig[]> {
   const configs: FlatConfig[][] = []
 
-  configs.push(javascript(), imports(), stylistic(opts?.jsx))
+  configs.push(javascript(opts?.unusedImports ?? true), imports(), stylistic(opts?.jsx))
 
-  if (enable(opts?.ts)) configs.push(typescript(typeof opts?.ts === 'object' ? opts.ts : {}))
+  if (enable(opts?.ts)) {
+    const { typescript } = await import('./conf/typescript')
+    configs.push(typescript(typeof opts?.ts === 'object' ? opts.ts : {}))
+  }
   if (enable(opts?.react)) configs.push(react())
 
   configs.push(userOptions)

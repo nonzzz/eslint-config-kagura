@@ -1,5 +1,4 @@
 export { javascript } from './javascript'
-export * from './typescript'
 export { stylistic } from './stylistic'
 export { imports } from './imports'
 export { react } from './react'
