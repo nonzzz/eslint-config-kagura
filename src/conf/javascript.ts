@@ -24,9 +24,6 @@ export function javascript(unusedImports: boolean): FlatConfig[] {
       linterOptions: {
         reportUnusedDisableDirectives: true
       },
-      plugins: {
-        'unused-imports': pluginUnusedImports
-      },
       rules: {
         'no-var': 'error',
         'object-shorthand': ['warn', 'properties'],
@@ -110,12 +107,7 @@ export function javascript(unusedImports: boolean): FlatConfig[] {
           enforceForIndexOf: true
         }],
         'valid-typeof': ['error', { requireStringLiterals: true }],
-        yoda: ['error', 'never'],
-        'unused-imports/no-unused-imports': 'error',
-        'unused-imports/no-unused-vars': [
-          'error',
-          { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: '^_' }
-        ]
+        yoda: ['error', 'never']
       }
     },
     unusedImports
