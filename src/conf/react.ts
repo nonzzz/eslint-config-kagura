@@ -11,7 +11,8 @@ export function react(): FlatConfig[] {
       plugins: {
         '@eslint-react': pluginReact as any,
         'jsx-a11y': pluginJsxA11y,
-        'react-hooks': pluginReactHooks
+        'react-hooks': pluginReactHooks,
+        ...pluginReact.configs['recommended-type-checked'].plugins as any
       },
       settings: {
         react: {
@@ -45,8 +46,6 @@ export function react(): FlatConfig[] {
           'error',
           { allow: 'as-needed' }
         ],
-        'react-prefer-function-component/react-prefer-function-component':
-          'error',
         '@eslint-react/naming-convention/use-state': 'error',
         '@eslint-react/prefer-shorthand-boolean': 'error',
         '@eslint-react/no-missing-key': 'error',
@@ -72,7 +71,6 @@ export function react(): FlatConfig[] {
         // Prevent problematic leaked values from being rendered
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/c42b624d0fb9ad647583a775ab9751091eec066f/docs/rules/jsx-no-leaked-render.md
         // 'react/jsx-no-leaked-render': 'off',
-        '@eslint-react/no-leaked-conditional-rendering': 'error',
 
         // To prevent potential unnecessary rerenders, and performance regressions
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/no-object-type-as-default-prop.md
@@ -109,20 +107,7 @@ export function react(): FlatConfig[] {
               'getSnapshotBeforeUpdate'
             ]
           }
-        ],
-
-        'jsx-a11y-minimal/alt-text': [
-          'warn',
-          {
-            elements: ['img'],
-            img: ['Image']
-          }
-        ],
-        'jsx-a11y-minimal/aria-props': 'warn',
-        'jsx-a11y-minimal/aria-proptypes': 'warn',
-        'jsx-a11y-minimal/aria-unsupported-elements': 'warn',
-        'jsx-a11y-minimal/role-has-required-aria-props': 'warn',
-        'jsx-a11y-minimal/role-supports-aria-props': 'warn'
+        ]
       }
     }
   ]
