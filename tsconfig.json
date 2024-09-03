@@ -1,14 +1,14 @@
 {
-    "compilerOptions": {
-        "outDir": "dist",
-        "baseUrl": ".",
-        "strict": true,
-        "esModuleInterop": true,
-        "resolveJsonModule":true,
-        "module": "CommonJS",
-        "moduleResolution":"Node",
-        "paths": {
-            "~/*":["internal/*"]
-        }
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "paths": {
+      "~/*": ["internal/*"]
     }
+  }
 }
