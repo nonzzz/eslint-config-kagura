@@ -1169,6 +1169,7 @@ __metadata:
     "@typescript-eslint/parser": ^8.17.0
     dprint: ^0.47.6
     eslint: ^9.16.0
+    eslint-plugin-unused-imports: ^4.1.4
     globals: ^15.13.0
     tsup: ^7.2.0
     typescript: ^5.7.2
@@ -1177,6 +1178,19 @@ __metadata:
     eslint: ">= 8.0.0"
   languageName: unknown
   linkType: soft
+
+"eslint-plugin-unused-imports@npm:^4.1.4":
+  version: 4.1.4
+  resolution: "eslint-plugin-unused-imports@npm:4.1.4"
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": ^8.0.0-0 || ^7.0.0 || ^6.0.0 || ^5.0.0
+    eslint: ^9.0.0 || ^8.0.0
+  peerDependenciesMeta:
+    "@typescript-eslint/eslint-plugin":
+      optional: true
+  checksum: 1f4ce3e3972699345513840f3af1b783033dbc3a3e85b62ce12b3f6a89fd8c92afe46d0c00af40bacb14465445983ba0ccc326a6fd5132553061fb0e47bcba19
+  languageName: node
+  linkType: hard
 
 "eslint-scope@npm:^8.2.0":
   version: 8.2.0
